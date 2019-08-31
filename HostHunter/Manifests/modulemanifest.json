@@ -1,0 +1,14 @@
+[
+  {
+    "Name": "Invoke-HostCommand",
+    "RelativeFileLocation": "\\RemoteConnections\\Invoke-HostCommand.psm1"
+  },
+  {
+    "Name": "Out-UDP",
+    "RelativeFileLocation": "\\HelperFunctions\\Out-UDP.psm1"
+  },
+  {
+    "Name": "Out-SIEM",
+    "RelativeFileLocation": "\\RemoteConnections\\LogicalAccountability\\Out-SIEM.psm1"
+  }
+]

@@ -1,0 +1,9 @@
+[
+  {
+    "Title": "Mitre T1084 Lab",
+    "SIEMSettings": {
+      "DestinationIP": "127.0.0.1",
+      "DestinationPort": "9990"
+    }
+  }
+]

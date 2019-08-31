@@ -10,5 +10,21 @@
   {
     "Name": "Out-SIEM",
     "RelativeFileLocation": "\\RemoteConnections\\LogicalAccountability\\Out-SIEM.psm1"
+  },
+  {
+    "Name": "Invoke-WMIEventing",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIEventing.psm1"
+  },
+  {
+    "Name": "Invoke-WMIEventFilter",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIEventFilter.psm1"
+  },
+  {
+    "Name": "Invoke-WMIEventConsumer",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIEventConsumer"
+  },
+  {
+    "Name": "Invoke-WMIEventBinder",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIBinder"
   }
 ]

@@ -1,4 +1,3 @@
-#Requires -Version 6.2
 #Requires -RunAsAdministrator
 
 param([string]$SettingsFile)

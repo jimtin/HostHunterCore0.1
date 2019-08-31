@@ -1,0 +1,1 @@
+# '$sendstring = $env:COMPUTERNAME + ",NotepadStarted," + (Get-Date).ToString(); (New-Object System.Net.Sockets.UdpClient).Send([Text.Encoding]::ASCII.GetBytes($sendstring),[Text.Encoding]::ASCII.GetBytes($sendstring).Length,(New-Object System.Net.IPEndPoint([System.Net.IPAddress]::Parse("127.0.0.1"), 9992)))

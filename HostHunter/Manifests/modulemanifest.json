@@ -25,6 +25,6 @@
   },
   {
     "Name": "Invoke-WMIEventBinder",
-    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIBinder"
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIEventBinder"
   }
 ]

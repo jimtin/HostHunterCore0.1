@@ -26,44 +26,10 @@ function Invoke-HostCommand{
     )
     
     ###############################################################################################################
-    # Host Hunter Tracking # 
+    # Host Hunter Tracking #
     
-    # Create a unique CommandID object so that command can be tracked through the network
-    $CommandID = Get-Random
-    $CommandID = $CommandID.ToString()
-    $hasher = New-Object System.Security.Cryptography.SHA256Managed
-    $tohash = [System.Text.Encoding]::UTF8.GetBytes($CommandID)
-    $hashByteArray = $hasher.ComputeHash($tohash)
-    foreach($byte in $hashByteArray)
-    {
-        $CommandIDHash += $byte.toString()
-    }
-
-    # Get hash of command. 
-    $CommandString = $Command.ToString()
-    $hasher = New-Object System.Security.Cryptography.SHA256Managed
-    $tohash = [System.Text.Encoding]::UTF8.GetBytes($CommandString)
-    $hashByteArray = $hasher.ComputeHash($tohash)
-    foreach($byte in $hashByteArray)
-    {
-        $CommandHash += $byte.toString()
-    }
-    
-    # Create Command Object
-    $CommandObject = @{
-        "CommandID" = $CommandIDHash
-        "Operator" = "JamesHinton"
-        "Target" = $Target
-        "TimeExecuted" = Get-Date
-        "CommandExecuted" = $Command
-    }
-    
-    # Convert into JSON 
-    $CommandObject = New-Object -TypeName psobject -Property $initialObject
-    $CommandObject = $CommandObject | ConvertTo-Json | Out-String
-    
-    # Send to tracking SIEM (currently not a thing)
-    Out-SIEM -StringToSend $CommandObject
+    $commandtracking = Out-AccountabilityObject -Command $Command
+    $CommandIDHash = $commandtracking.CommandID
     
     ###############################################################################################################
     
@@ -85,14 +51,8 @@ function Invoke-HostCommand{
     }else{
         $Output = Invoke-Command -ComputerName $Target -Credential $cred -ScriptBlock $Command
     }
-    
-    # Write result to SIEM
-    foreach($object in $Output)
-    {
-        # Add unique identifier
-        $object | Add-Member -NotePropertyName "CommandID" -NotePropertyValue $CommandIDHash | ConvertTo-Json | Out-String
-        Out-SIEM -StringToSend $object | Out-Null
-    }
+    Write-Host $CommandIDHash
+    Out-CommandReturnObject -CommandID $CommandIDHash -InvokeObject $Output
     
     # Now return object as per usual
     Write-Output $Output

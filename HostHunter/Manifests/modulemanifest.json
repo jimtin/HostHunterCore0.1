@@ -26,5 +26,13 @@
   {
     "Name": "Invoke-WMIEventBinder",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIEventBinder"
+  },
+  {
+    "Name": "Out-AccountabilityObject",
+    "RelativeFileLocation": "\\HelperFunctions\\Out-AccountabilityObject.psm1"
+  },
+  {
+    "Name": "Out-CommandReturnObject",
+    "RelativeFileLocation": "\\HelperFunctions\\Out-CommandReturnObject.psm1"
   }
 ]

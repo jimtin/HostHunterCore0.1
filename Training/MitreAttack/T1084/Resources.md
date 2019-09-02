@@ -20,5 +20,3 @@
 ### HostHunter Executables Used:
 1. UDPReceiver.exe
 
-### What happens?
-

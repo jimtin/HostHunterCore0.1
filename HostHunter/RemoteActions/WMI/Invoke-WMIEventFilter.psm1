@@ -27,7 +27,6 @@ function Invoke-WMIEventFilter
     param
     (
         $Name,
-        [ValidateSet("NotepadStartup")]$Preset,
         $WQLQuery
     )
     

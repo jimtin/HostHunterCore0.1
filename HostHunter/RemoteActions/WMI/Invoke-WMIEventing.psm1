@@ -33,7 +33,32 @@ function Invoke-WMIEventing
     {
         $Name = "NotepadDetect"
         $WQLQuery = "SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName=*notepad*"
+        $Class = 'ActiveScript'
     }
-
+    
+    $output = @{
+        FilterOutcome = ""
+        ConsumerOutcome = ""
+        BinderOutcome = ""
+        Outcome = $false
+    }
+    
+    # Invoke the setup of the Filter
+    Write-Verbose "Invoking WMIEventBinder"
+    $filtername = Invoke-WMIEventFilter -Name $Name -WQLQuery $WQLQuery
+    $output.FilterOutcome = $filtername
+    
+    # Invoke the setup of the Consumer
+    Write-Verbose "Invoking WMIEventConsumer"
+    $consumername = Invoke-WMIEventConsumer -Name $Name -Class $Class
+    $output.ConsumerOutcome = $consumername
+    
+    # Invoke the setup of the Binder
+    Write-Verbose "Invoking WMIEventBinder"
+    $bindername = Invoke-WMIEventConsumer -Name $Name -FilterName $filtername.Name -ConsumerName $consumername.Name -BinderName $name
+    $output.BinderOutcome = $bindername
+    
+    # Return the output
+    Write-Output $output
 
 }

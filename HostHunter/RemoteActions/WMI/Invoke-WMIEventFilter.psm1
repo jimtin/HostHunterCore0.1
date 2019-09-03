@@ -30,12 +30,19 @@ function Invoke-WMIEventFilter
         [ValidateSet("NotepadStartup")]$Preset,
         $WQLQuery
     )
-
-
-    # Construct the scriptblock for passing to the remote machine
-    # todo: include logical accountability
     
-    # With scriptblock setup, now run on remote machine
+    ###############################################################################################################
+    # Logical Accountability
+    # Create the command key details
+    $command = @{
+        Type = "WMIEventFilter"
+        WQLQuery = $WQLQuery
+    }
+    $commandtracking = Out-AccountabilityObject -Command $Command
+    $CommandIDHash = $commandtracking.CommandID
+    ###############################################################################################################
+    
+    # Run on remote machine
     $eventfilter = Invoke-Command -ComputerName $target -Credential $creds -ScriptBlock {
         $wmiParams = @{
             Computername = $env:COMPUTERNAME
@@ -52,9 +59,13 @@ function Invoke-WMIEventFilter
         $filterResult = Set-WmiInstance @wmiParams
         Write-Output $filterResult
     } -ArgumentList $Name, $WQLQuery
+
+    ###############################################################################################################
+    # Send output to SIEM
+    Out-CommandReturnObject -CommandID $CommandIDHash -InvokeObject $Output
+    ###############################################################################################################
     
-    # todo: store this artifact
-    
+    # Return object to Powershell window
     Write-Output $eventfilter
     
 }

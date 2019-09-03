@@ -51,7 +51,6 @@ function Invoke-HostCommand{
     }else{
         $Output = Invoke-Command -ComputerName $Target -Credential $cred -ScriptBlock $Command
     }
-    Write-Host $CommandIDHash
     Out-CommandReturnObject -CommandID $CommandIDHash -InvokeObject $Output
     
     # Now return object as per usual

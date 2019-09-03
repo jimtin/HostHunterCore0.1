@@ -27,13 +27,22 @@ function Invoke-WMIEventConsumer
         [ValidateSet('ActiveScript', 'Logfile', 'CommandLineTemplate')]$Class
 
     )
-
-    # Construct the scriptblock for passing to the remote machine
-    # todo: Include logical accountability
     
+    ###############################################################################################################
+    # Logical Accountability
+    # Create the command key details
+    $command = @{
+        Type = "WMIEventConsumer"
+        WQLQuery = $WQLQuery
+    }
+    $commandtracking = Out-AccountabilityObject -Command $Command
+    $CommandIDHash = $commandtracking.CommandID
+    ###############################################################################################################
+    
+    # Set name for the consumer
     $name = $name + "Consumer"
 
-    # With scriptblock setup, now run on remote machine
+    # Run on remote machine
     $consumer = Invoke-Command -ScriptBlock {
         $ipaddress = $args[1]
         $port = $args[2]
@@ -47,5 +56,11 @@ function Invoke-WMIEventConsumer
         Write-Output $Consumer
     } -ArgumentList $Name, $DestinationIP, $DestinationPort
 
+    ###############################################################################################################
+    # Send output to SIEM
+    Out-CommandReturnObject -CommandID $CommandIDHash -InvokeObject $Output
+    ###############################################################################################################
+
+    # Return output to Powershell window
     Write-Output $consumer
 }

@@ -13,19 +13,19 @@
   },
   {
     "Name": "Invoke-WMIEventing",
-    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIEventing.psm1"
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingCreation\\Invoke-WMIEventing.psm1"
   },
   {
     "Name": "Invoke-WMIEventFilter",
-    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIEventFilter.psm1"
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingCreation\\Invoke-WMIEventFilter.psm1"
   },
   {
     "Name": "Invoke-WMIEventConsumer",
-    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIEventConsumer"
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingCreation\\Invoke-WMIEventConsumer.psm1"
   },
   {
     "Name": "Invoke-WMIEventBinder",
-    "RelativeFileLocation": "\\RemoteActions\\WMI\\Invoke-WMIEventBinder"
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingCreation\\Invoke-WMIEventBinder.psm1"
   },
   {
     "Name": "Out-AccountabilityObject",
@@ -34,5 +34,17 @@
   {
     "Name": "Out-CommandReturnObject",
     "RelativeFileLocation": "\\HelperFunctions\\Out-CommandReturnObject.psm1"
+  },
+  {
+    "Name": "Get-WMIEventFilter",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingDetection\\Get-WMIEventFilter.psm1"
+  },
+  {
+    "Name": "Get-WMIEventConsumer",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingDetection\\Get-WMIEventConsumer.psm1"
+  },
+  {
+    "Name": "Get-WMIEventBinder",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingDetection\\Get-WMIEventBinder.psm1"
   }
 ]

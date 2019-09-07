@@ -49,6 +49,26 @@
   },
   {
     "Name": "Invoke-WMIEventFilterEradication",
-    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Invoke-WMIEventFilterEradication.psm1"
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Eradication\\Invoke-WMIEventFilterEradication.psm1"
+  },
+  {
+    "Name": "Invoke-WMIEventConsumerEradication",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Eradication\\Invoke-WMIEventConsumerEradication.psm1"
+  },
+  {
+    "Name": "Invoke-WMIEventBinderEradication",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Eradication\\Invoke-WMIEventBinderEradication.psm1"
+  },
+  {
+    "Name": "Invoke-WMIEventFilterSubversion",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Subversion\\Invoke-WMIEventFilterSubversion.psm1"
+  },
+  {
+    "Name": "Invoke-WMIEventConsumerSubversion",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Subversion\\Invoke-WMIEventConsumerSubversion.psm1"
+  },
+  {
+    "Name": "Invoke-WMIEventBinderSubversion",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Subversion\\Invoke-WMIEventBinderSubversion.psm1"
   }
 ]

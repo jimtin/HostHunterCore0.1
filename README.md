@@ -11,10 +11,10 @@ HostHunterCore Public Branch
 2. CybOX Language Defined Objects Specification - https://cybox.mitre.org/language/specifications/CybOX_Language_Defined_Objects_Specification_v1.0.pdf
 
 ## Product Roadmap
-Version 0.2 -> Implement a testing framework. Most likely Pester (powershell)
-Version 0.3 -> Implement developer tools for HostHunter
-Version 0.4 -> Implement artifact integration
-Version 0.5 -> Implement SIEM integration
+- Version 0.2 -> Implement a testing framework. Most likely Pester (powershell)
+- Version 0.3 -> Implement developer tools for HostHunter
+- Version 0.4 -> Implement artifact integration
+- Version 0.5 -> Implement System Escalation
 
 ## Setup
 1. Windows 10 Enterprise

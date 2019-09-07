@@ -6,8 +6,7 @@
 - **PowerShell and Events: Permanent WMI Event Subscriptions** *Boe Prox* https://learn-powershell.net/2013/08/14/powershell-and-events-permanent-wmi-event-subscriptions/
 
 ### Theoretical Overview
-- +
-**WMI Query Language via Powershell** *Eddie Jackson* http://eddiejackson.net/web_documents/WMI_Query_Language_via_PowerShell.pdf
+- **WMI Query Language via Powershell** *Eddie Jackson* http://eddiejackson.net/web_documents/WMI_Query_Language_via_PowerShell.pdf
 
 ## Lab Guide
 ### HostHunter Modules Used:

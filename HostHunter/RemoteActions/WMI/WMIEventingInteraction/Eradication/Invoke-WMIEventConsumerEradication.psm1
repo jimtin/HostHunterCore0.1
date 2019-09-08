@@ -33,7 +33,8 @@ function Invoke-WMIEventConsumerEradication
     if($Name) {
         $outcome.ConsumerName = $Name
         # Create Removal String
-        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __EventConsumer | Where-Object Name -EQ '$Name' | Remove-WMIObject"
+        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __EventConsumer | Where-Object Name -EQ '$Name' | Remove-WMIObject
+        Write-Output 'EventConsumer $Name deleted'"
         # Create removal Scriptblock
         $removalscriptblock = [ScriptBlock]::Create($removalstring)
         # Delete the WMI Event Filters
@@ -48,7 +49,8 @@ function Invoke-WMIEventConsumerEradication
     }else{
         $outcome.ConsumerName = "All"
         # Create Removal String
-        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __EventConsumer | Remove-WMIObject"
+        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __EventConsumer | Remove-WMIObject
+        Write-Output 'All event consumers deleted'"
         # Create removal Scriptblock
         $removalscriptblock = [ScriptBlock]::Create($removalstring)
         # Delete the WMI Event Filters

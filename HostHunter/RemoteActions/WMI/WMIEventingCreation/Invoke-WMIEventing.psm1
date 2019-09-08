@@ -25,18 +25,20 @@ function Invoke-WMIEventing
     param
     (
         [Parameter(Mandatory = $true)][String]$Name,
-        [Parameter]$WQLQuery
+        $WQLQuery
     )
 
     # If a preset value is used, set the WQL Query
-    if($Preset -eq "NotepadStartup")
+    if($Name -eq "NotepadStartup")
     {
+        Write-Host -Object "Prebuilt WMI Eventing NotepadStartup selected" -ForegroundColor Cyan
         $Name = "NotepadDetect"
-        $WQLQuery = "SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName=*notepad*"
+        $WQLQuery = "SELECT * FROM Win32_ProcessStartTrace WHERE ProcessName='notepad.exe'"
         $Class = 'ActiveScript'
+        Write-Host -Object "Start UDPReceiver.exe on Port $port to watch for Notepad.exe startups" -ForegroundColor White
     }
     
-    $output = @{
+    $Outcome = @{
         FilterOutcome = ""
         ConsumerOutcome = ""
         BinderOutcome = ""
@@ -44,19 +46,20 @@ function Invoke-WMIEventing
     }
     
     # Invoke the setup of the Filter
-    Write-Verbose "Invoking WMIEventBinder"
-    $filtername = Invoke-WMIEventFilter -Name $Name -WQLQuery $WQLQuery
-    $output.FilterOutcome = $filtername
+    Write-Host -Object "Creating WMI Event Filter $Name on $target" -ForegroundColor Cyan
+    $filter = Invoke-WMIEventFilter -Name $Name -WQLQuery $WQLQuery
+    $Outcome.FilterOutcome = $filter
     
     # Invoke the setup of the Consumer
-    Write-Verbose "Invoking WMIEventConsumer"
-    $consumername = Invoke-WMIEventConsumer -Name $Name -Class $Class
-    $output.ConsumerOutcome = $consumername
+    Write-Host -Object "Creating WMI Event Consumer $Name Consumer on $target" -ForegroundColor Cyan
+    $consumer = Invoke-WMIEventConsumer -Name $Name -Class $Class
+    $Outcome.ConsumerOutcome = $consumer
     
     # Invoke the setup of the Binder
-    Write-Verbose "Invoking WMIEventBinder"
-    $bindername = Invoke-WMIEventConsumer -Name $Name -FilterName $filtername.Name -ConsumerName $consumername.Name -BinderName $name
-    $output.BinderOutcome = $bindername
+    Write-Host -Object "Creating WMI Event Binder for Filter:$filtername and Consumer:$consumername on $target" -ForegroundColor Cyan
+    $binder = Invoke-WMIEventBinder -FilterObject $filter -ConsumerObject $consumer
+    $Outcome.BinderOutcome = $binder
+    $Outcome.Outcome = $true
     
     # Return the output
     Write-Output $output

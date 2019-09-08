@@ -39,8 +39,8 @@ function Invoke-HostCommand{
        $target = $newtarget.ToString()
     }
     
-    if(-not $cred){
-        $cred = Get-Credential
+    if(-not $creds){
+        $creds = Get-Credential
     }
     
     # Execute Command
@@ -49,8 +49,9 @@ function Invoke-HostCommand{
     if($System){
         
     }else{
-        $Output = Invoke-Command -ComputerName $Target -Credential $cred -ScriptBlock $Command
+        $Output = Invoke-Command -ComputerName $Target -Credential $creds -ScriptBlock $Command
     }
+    
     Out-CommandReturnObject -CommandID $CommandIDHash -InvokeObject $Output
     
     # Now return object as per usual

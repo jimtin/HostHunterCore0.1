@@ -26,6 +26,8 @@ if($SettingsFile)
     $Global:DestinationPort = $settings.SIEMSettings.DestinationPort
     $title = $settings.Title
     $Host.ui.RawUI.WindowTitle = $title
+    # Clear the screen
+    clear
     Write-Information -InformationAction Continue -MessageData "##################################################"
     Write-Information -InformationAction Continue -MessageData $title
     Write-Information -InformationAction Continue -MessageData "##################################################"

@@ -8,21 +8,20 @@ function Invoke-WMIEventBinder
 	Binds an Event Filter and Event Consumer together, and records this artifact in the SIEM.
 
 	.Parameter
-	FilterName - the name of the WMI Event actions to be undertaken
+	FilterObject - the name of the WMI Event actions to be undertaken
 	
 	.Parameter 
-	ConsumerName - the type of consumer to be created
+	ConsumerObject - the type of consumer to be created
 
 	.Example
-	Invoke-WMIEventFilter -Name "CustomName" -Query "SELECT * FROM __InstanceCreationEvent"
+	Invoke-WMIEventBinder -FilterObject $filterobject -ConsumerObject $consumerobject
 	#>
 
     [CmdletBinding()]
     param
     (
-        $FilterName,
-        $ConsumerName,
-        $BinderName
+        $FilterObject,
+        $ConsumerObject
     )
 
     ###############################################################################################################
@@ -35,9 +34,6 @@ function Invoke-WMIEventBinder
     $commandtracking = Out-AccountabilityObject -Command $Command
     $CommandIDHash = $commandtracking.CommandID
     ###############################################################################################################
-
-    # Set name
-    $name = $BinderName + "Binder"
     
     # Run on remote machine
     $binder = Invoke-Command -ComputerName $target -Credential $creds -ScriptBlock{
@@ -45,9 +41,11 @@ function Invoke-WMIEventBinder
             Filter = $args[0]
             Consumer = $args[1]
         }
-        $Binder = Set-WmiInstance -Namespace root/subscription -Class __FilterToConsumerBinding -Arguments $FilterToConsumerArgs -Namespace $args[2]
-        Write-Output $Binder
-    } -ArgumentList $FilterName, $ConsumerName, $name
+        $binder = Set-WmiInstance -Namespace root/subscription -Class __FilterToConsumerBinding -Arguments $FilterToConsumerArgs
+    Write-Output "BinderCreated"
+    } -ArgumentList $FilterObject, $ConsumerObject
+    
+    $output = $binder
 
     ###############################################################################################################
     # Send output to SIEM

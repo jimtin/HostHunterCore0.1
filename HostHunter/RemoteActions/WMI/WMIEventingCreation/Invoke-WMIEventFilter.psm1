@@ -58,6 +58,8 @@ function Invoke-WMIEventFilter
         $filterResult = Set-WmiInstance @wmiParams
         Write-Output $filterResult
     } -ArgumentList $Name, $WQLQuery
+    
+    $output = $eventfilter
 
     ###############################################################################################################
     # Send output to SIEM

@@ -31,7 +31,8 @@ function Invoke-WMIEventFilterEradication
     if($Name) {
         $outcome.FilterName = $Name
         # Create Removal String
-        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __EventFilter | Where-Object Name -EQ '$Name' | Remove-WMIObject"
+        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __EventFilter | Where-Object Name -EQ '$Name' | Remove-WMIObject
+        Write-Output 'EventFilter $Name deleted'"
         # Create removal Scriptblock
         $removalscriptblock = [ScriptBlock]::Create($removalstring)
         # Delete the WMI Event Filters
@@ -46,7 +47,8 @@ function Invoke-WMIEventFilterEradication
     }else{
         $outcome.FilterName = "All"
         # Create Removal String
-        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __EventFilter | Remove-WMIObject"
+        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __EventFilter | Remove-WMIObject
+        Write-Output 'All Event Filters deleted'"
         # Create removal Scriptblock
         $removalscriptblock = [ScriptBlock]::Create($removalstring)
         # Delete the WMI Event Filters

@@ -33,7 +33,8 @@ function Invoke-WMIEventBinderEradication
     if($Name) {
         $outcome.BinderName = $Name
         # Create Removal String
-        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __FilterToConsumerBinding | Where-Object Name -EQ '$Name' | Remove-WMIObject"
+        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __FilterToConsumerBinding | Where-Object __PATH -Match '$Name' | Remove-WMIObject
+                         Write-Output 'EventBinder $Name deleted'"
         # Create removal Scriptblock
         $removalscriptblock = [ScriptBlock]::Create($removalstring)
         # Delete the WMI Event Filters
@@ -48,7 +49,8 @@ function Invoke-WMIEventBinderEradication
     }else{
         $outcome.BinderName = "All"
         # Create Removal String
-        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __FilterToConsumerBinding | Remove-WMIObject"
+        $removalstring = "Get-WMIObject -Namespace root\subscription -Class __FilterToConsumerBinding | Remove-WMIObject
+                Write-Output 'All Event Binders deleted'"
         # Create removal Scriptblock
         $removalscriptblock = [ScriptBlock]::Create($removalstring)
         # Delete the WMI Event Filters

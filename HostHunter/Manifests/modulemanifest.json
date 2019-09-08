@@ -70,5 +70,9 @@
   {
     "Name": "Invoke-WMIEventBinderSubversion",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Subversion\\Invoke-WMIEventBinderSubversion.psm1"
-  }
+  },
+  {
+    "Name": "Invoke-WMIEventingEradication",
+    "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Eradication\\Invoke-WMIEventingEradication.psm1"
+  }  
 ]

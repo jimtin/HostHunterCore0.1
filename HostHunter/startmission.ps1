@@ -27,7 +27,7 @@ if($SettingsFile)
     $title = $settings.Title
     $Host.ui.RawUI.WindowTitle = $title
     # Clear the screen
-    clear
+    #clear
     Write-Information -InformationAction Continue -MessageData "##################################################"
     Write-Information -InformationAction Continue -MessageData $title
     Write-Information -InformationAction Continue -MessageData "##################################################"

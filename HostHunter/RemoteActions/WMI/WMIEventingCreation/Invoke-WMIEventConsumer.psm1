@@ -46,8 +46,9 @@ function Invoke-WMIEventConsumer
         # Run on remote machine
         $consumer = Invoke-Command -ComputerName $target -Credential $creds -ScriptBlock{
             $port = $args[1]
-            $commandtemplate = "powershell.exe (New-Object System.Net.Sockets.UdpClient).Send([Text.Encoding]::ASCII.GetBytes('NotepadStarted'),[Text.Encoding]::ASCII.GetBytes('NotepadStarted').Length,(New-Object System.Net.IPEndPoint([System.Net.IPAddress]::Parse('127.0.0.1'), $port)))"
-
+            #$commandtemplate = "powershell.exe (New-Object System.Net.Sockets.UdpClient).Send([Text.Encoding]::ASCII.GetBytes('NotepadStarted'),[Text.Encoding]::ASCII.GetBytes('NotepadStarted').Length,(New-Object System.Net.IPEndPoint([System.Net.IPAddress]::Parse('127.0.0.1'), $port)))"
+            $commandtemplate = "powershell.exe calc.exe"
+            
             $CommandLineConsumerArgs = @{
                 Name = $args[0]
                 CommandLineTemplate = $commandtemplate

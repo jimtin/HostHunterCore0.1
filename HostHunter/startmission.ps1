@@ -1,8 +1,13 @@
 #Requires -RunAsAdministrator
 
-param([string]$SettingsFile)
+param([string]$SettingsFile,
+[Switch]$Test)
 
-Write-Information -InformationAction Continue -MessageData "HostHunter starting"
+clear 
+
+Write-Host -ForegroundColor Blue -Object "###########################################################################"
+Write-Host -ForegroundColor Cyan -Object "#########################   HostHunter Starting   #########################"
+Write-Host -ForegroundColor Blue -Object "###########################################################################"
 
 # Set current location for all other commands
 $Global:Location = Get-Location
@@ -26,12 +31,29 @@ if($SettingsFile)
     $Global:DestinationPort = $settings.SIEMSettings.DestinationPort
     $title = $settings.Title
     $Host.ui.RawUI.WindowTitle = $title
-    # Clear the screen
-    #clear
     Write-Information -InformationAction Continue -MessageData "##################################################"
     Write-Information -InformationAction Continue -MessageData $title
     Write-Information -InformationAction Continue -MessageData "##################################################"
+}elseif($Test){
+    Write-Host -ForegroundColor Blue -Object "###########################################################################"
+    Write-Host -ForegroundColor Cyan -Object "####################  HostHunter Testing using Pester  ####################"
+    Write-Host -ForegroundColor Blue -Object "###########################################################################"
+    # Check to make sure Pester is installed
+    If(Get-Module -ListAvailable -Name Pester) {
+        Write-Host -Object "Pester Testing Framework available"
+        $pester = $true
+    }
+    else
+    {
+        Write-Host -Object "Pester not available"
+    }
+    $Global:DestinationIP = "127.0.0.1"
+    $Global:DestinationPort = "9991"
+    $title = "HostHunter Unit Testing Framework"
+    $Host.ui.RawUI.WindowTitle = $title
+    .\UnitTesting\TestHostHunter.tests.ps1
 }else{
-    Write-Information -InformationAction Continue -MessageData "No Settings Data"
+    Write-Host -ForegroundColor Red -Object "No mission information loaded"
 }
 
+Write-Host -ForegroundColor Blue -Object "###########################################################################"

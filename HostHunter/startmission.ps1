@@ -42,7 +42,7 @@ if($SettingsFile)
     Write-Host -ForegroundColor Blue -Object "###########################################################################"
     # Check to make sure Pester is installed
     If(Get-Module -ListAvailable -Name Pester) {
-        Write-Host -Object "Pester Testing Framework available"
+        Write-Host -ForegroundColor Cyan -Object "Pester Testing Framework available"
         $pester = $true
         Write-Host -ForegroundColor Cyan -Object "Loading Test Modules"
         foreach($line in $modules){

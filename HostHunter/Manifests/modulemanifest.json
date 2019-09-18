@@ -94,6 +94,8 @@
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Eradication\\Invoke-WMIEventingEradication.psm1"
   },
   {
-    
+    "Name": "Test-HostCommand",
+    "Purpose": "UnitTest",
+    "RelativeFileLocation": "\\UnitTesting\\RemoteConnections\\Test-HostCommand.tests.psm1"
   }
 ]

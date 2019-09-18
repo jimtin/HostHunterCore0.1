@@ -18,9 +18,11 @@ $loc = $Location.tostring() + "\Manifests\modulemanifest.json"
 $modules = Get-Content $loc | ConvertFrom-Json
 foreach($line in $modules){
     $filelocation = $Location.toString() + $line.RelativeFileLocation
-    $ImportString = "Importing: " + $line.Name
-    Write-Information -InformationAction Continue -MessageData $ImportString
-    Import-Module $filelocation -Force
+    if($line.Purpose -ne "UnitTest"){
+        $ImportString = "Importing: " + $line.Name
+        Write-Information -InformationAction Continue -MessageData $ImportString
+        Import-Module $filelocation -Force
+    }
 }
 
 # Load settings
@@ -42,6 +44,15 @@ if($SettingsFile)
     If(Get-Module -ListAvailable -Name Pester) {
         Write-Host -Object "Pester Testing Framework available"
         $pester = $true
+        Write-Host -ForegroundColor Cyan -Object "Loading Test Modules"
+        foreach($line in $modules){
+            $filelocation = $Location.toString() + $line.RelativeFileLocation
+            if($line.Purpose -eq "UnitTest"){
+                $ImportString = "Importing: " + $line.Name
+                Write-Information -InformationAction Continue -MessageData $ImportString
+                Import-Module $filelocation -Force
+            }
+        }
     }
     else
     {

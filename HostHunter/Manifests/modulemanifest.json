@@ -1,18 +1,22 @@
 [
   {
     "Name": "Invoke-HostCommand",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteConnections\\Invoke-HostCommand.psm1"
   },
   {
     "Name": "Out-UDP",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\HelperFunctions\\Out-UDP.psm1"
   },
   {
     "Name": "Out-SIEM",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteConnections\\LogicalAccountability\\Out-SIEM.psm1"
   },
   {
     "Name": "Invoke-WMIEventing",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingCreation\\Invoke-WMIEventing.psm1"
   },
   {
@@ -21,58 +25,75 @@
   },
   {
     "Name": "Invoke-WMIEventConsumer",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingCreation\\Invoke-WMIEventConsumer.psm1"
   },
   {
     "Name": "Invoke-WMIEventBinder",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingCreation\\Invoke-WMIEventBinder.psm1"
   },
   {
     "Name": "Out-AccountabilityObject",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\HelperFunctions\\Out-AccountabilityObject.psm1"
   },
   {
     "Name": "Out-CommandReturnObject",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\HelperFunctions\\Out-CommandReturnObject.psm1"
   },
   {
     "Name": "Get-WMIEventFilter",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingDetection\\Get-WMIEventFilter.psm1"
   },
   {
     "Name": "Get-WMIEventConsumer",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingDetection\\Get-WMIEventConsumer.psm1"
   },
   {
     "Name": "Get-WMIEventBinder",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingDetection\\Get-WMIEventBinder.psm1"
   },
   {
     "Name": "Invoke-WMIEventFilterEradication",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Eradication\\Invoke-WMIEventFilterEradication.psm1"
   },
   {
     "Name": "Invoke-WMIEventConsumerEradication",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Eradication\\Invoke-WMIEventConsumerEradication.psm1"
   },
   {
     "Name": "Invoke-WMIEventBinderEradication",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Eradication\\Invoke-WMIEventBinderEradication.psm1"
   },
   {
     "Name": "Invoke-WMIEventFilterSubversion",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Subversion\\Invoke-WMIEventFilterSubversion.psm1"
   },
   {
     "Name": "Invoke-WMIEventConsumerSubversion",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Subversion\\Invoke-WMIEventConsumerSubversion.psm1"
   },
   {
     "Name": "Invoke-WMIEventBinderSubversion",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Subversion\\Invoke-WMIEventBinderSubversion.psm1"
   },
   {
     "Name": "Invoke-WMIEventingEradication",
+    "Purpose": "Operations",
     "RelativeFileLocation": "\\RemoteActions\\WMI\\WMIEventingInteraction\\Eradication\\Invoke-WMIEventingEradication.psm1"
-  }  
+  },
+  {
+    
+  }
 ]
